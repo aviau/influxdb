@@ -20,7 +20,8 @@ Build-Depends: debhelper (>= 8),
                curl,
                rpm,
                build-essential,
-               git
+               git,
+               wget
 
 Package: influxdb
 Architecture: all
