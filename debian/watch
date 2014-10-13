@@ -1,0 +1,3 @@
+version=3
+opts=uversionmangle=s/(rc|dev|a|b|c)/~$1/ \
+http://s3.amazonaws.com/influxdb/influxdb_([\d\.]+)_amd64.deb
