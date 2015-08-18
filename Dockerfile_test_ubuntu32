@@ -1,0 +1,21 @@
+FROM 32bit/ubuntu:14.04
+
+RUN apt-get update && apt-get install -y python-software-properties software-properties-common git
+RUN add-apt-repository ppa:evarlast/golang1.4
+RUN apt-get update && apt-get install -y golang-go
+
+ENV GOPATH=/root/go
+RUN mkdir -p /root/go/src/github.com/influxdb/influxdb
+
+# Download influxdb deps so that they are cached
+RUN go get -t -d -v github.com/influxdb/influxdb
+
+# Download spew (Why dosen't go get download this in the first place?)
+run go get -t -d -v github.com/davecgh/go-spew/spew
+
+# Remove the influxdb sources
+RUN rm -rf /root/go/src/github.com/influxdb/influxdb
+
+# Add the actual sources
+RUN mkdir -p /root/go/src/github.com/influxdb/influxdb
+ADD . /root/go/src/github.com/influxdb/influxdb/
