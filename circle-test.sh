@@ -60,4 +60,6 @@ case $CIRCLE_NODE_INDEX in
        ;;
 esac
 
+exit_if_fail ./test-32bit-docker.sh
+
 exit $rc

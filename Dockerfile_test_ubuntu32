@@ -7,8 +7,4 @@ RUN apt-get update && apt-get install -y golang-go
 ENV GOPATH=/root/go
 RUN mkdir -p /root/go/src/github.com/influxdb/influxdb
 
-# Download influxdb deps so that they are cached
-#RUN go get -t -d -v github.com/influxdb/influxdb
-#RUN rm -rf /root/go/src/github.com/influxdb/influxdb
-
-ADD ./* /root/go/src/github.com/influxdb/influxdb/
+VOLUME /root/go/src/github.com/influxdb/influxdb
